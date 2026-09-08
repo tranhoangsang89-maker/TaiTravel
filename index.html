@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài Travel | Dịch Vụ Du Lịch & Xe Hợp Đồng</title>
+    <meta name="description" content="Dịch vụ xe hợp đồng 4 chỗ & 7 chỗ đẳng cấp, an toàn. Đón đúng giờ, tài xế lịch sự, cam kết báo giá trọn gói.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        primaryLight: '#1E293B',
+                        accent: '#F59E0B',
+                        accentHover: '#D97706',
+                        bgLight: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 15px rgba(245, 158, 11, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles */
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .pulse-btn {
+            animation: pulse-shadow 2s infinite;
+        }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8FAFC; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 0; background-color: #F59E0B;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- 1. Sticky Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="Logo Tài Travel.png" alt="Tài Travel Logo" class="h-12 w-auto object-contain">
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-primary font-medium nav-link">Về chúng tôi</a>
+                    <a href="#fleet" class="text-slate-600 hover:text-primary font-medium nav-link">Dòng xe</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-primary font-medium nav-link">Bảng giá</a>
+                    <a href="#features" class="text-slate-600 hover:text-primary font-medium nav-link">Cam kết</a>
+                    <a href="#reviews" class="text-slate-600 hover:text-primary font-medium nav-link">Đánh giá</a>
+                </nav>
+                
+                <!-- Desktop CTAs -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="tel:0774937907" class="flex items-center text-primary font-bold hover:text-accent transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mr-2">
+                            <i class="fa-solid fa-phone-volume text-primary"></i>
+                        </div>
+                        077 493 7907
+                    </a>
+                    <a href="https://zalo.me/0774937907" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-md flex items-center">
+                        <img src="icon%20Zalo%20APP.png" class="w-5 h-5 mr-2 rounded-md" alt="Zalo">
+                        Zalo Đặt Xe
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Về chúng tôi</a>
+                <a href="#fleet" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Dòng xe</a>
+                <a href="#pricing" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Bảng giá ước tính</a>
+                <a href="#features" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Cam kết</a>
+                <a href="#reviews" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-accent hover:bg-slate-50">Đánh giá</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="relative pt-28 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 hero-bg min-h-[90vh] flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 text-white">
+                    <div class="inline-block bg-accent/20 border border-accent/50 text-accent font-medium px-4 py-1.5 rounded-full mb-6 text-sm">
+                        <i class="fa-solid fa-star mr-1"></i> Dịch vụ tiêu chuẩn 5 sao
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Dịch Vụ Xe Hợp Đồng 4 Chỗ & 7 Chỗ <br/>
+                        <span class="text-accent">Đẳng Cấp - An Toàn</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+                        Đón đúng giờ, tài xế lịch sự, xe đời mới sạch sẽ. Cam kết báo giá trọn gói - không phát sinh chi phí ẩn. Đồng hành cùng bạn trên mọi nẻo đường.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="flex items-center bg-primary/40 backdrop-blur-sm border border-slate-700 px-4 py-2 rounded-lg">
+                            <i class="fa-solid fa-shield-halved text-accent text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-slate-200">Bảo hiểm hành khách đầy đủ</span>
+                        </div>
+                        <div class="flex items-center bg-primary/40 backdrop-blur-sm border border-slate-700 px-4 py-2 rounded-lg">
+                            <i class="fa-solid fa-clock text-accent text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-slate-200">Phục vụ 24/7</span>
+                        </div>
+                        <div class="flex items-center bg-primary/40 backdrop-blur-sm border border-slate-700 px-4 py-2 rounded-lg">
+                            <i class="fa-solid fa-bottle-water text-accent text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-slate-200">Miễn phí nước suối</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Contact Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-2xl shadow-2xl p-8 md:p-10 border border-white/20 relative overflow-hidden text-center">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-accent"></div>
+                        
+                        <div class="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fa-solid fa-headset text-4xl text-accent"></i>
+                        </div>
+                        
+                        <h3 class="text-3xl font-bold text-primary mb-4">Liên Hệ Đặt Xe</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+                            Gọi điện trực tiếp hoặc nhắn tin qua Zalo để nhận báo giá và điều xe ngay lập tức. Phục vụ 24/7.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <a href="tel:0774937907" class="w-full bg-primary hover:bg-primaryLight text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex justify-center items-center group shadow-lg">
+                                <i class="fa-solid fa-phone-volume text-xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-lg">Gọi: 077 493 7907</span>
+                            </a>
+                            
+                            <a href="https://zalo.me/0774937907" target="_blank" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex justify-center items-center group shadow-lg">
+                                <img src="icon%20Zalo%20APP.png" class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform rounded-md" alt="Zalo">
+                                <span class="text-lg">Chat Zalo Nhận Báo Giá</span>
+                            </a>
+                        </div>
+                        
+                        <p class="text-center text-sm text-slate-500 mt-6 font-medium">
+                            <i class="fa-solid fa-bolt text-accent mr-1"></i> Có xe ngay sau 15 phút
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About Us -->
+    <section id="about" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="absolute inset-0 bg-accent translate-x-4 translate-y-4 rounded-2xl opacity-20"></div>
+                    <img src="DVDL Cao Tài.png" alt="Dịch Vụ Du Lịch Tài Travel" class="relative rounded-2xl shadow-2xl w-full object-cover border-4 border-white">
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-2">Về Chúng Tôi</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-primary mb-6">Dịch Vụ Du Lịch <span class="text-accent">Tài Travel</span></h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                        Với phương châm "An toàn - Chuyên nghiệp - Tận tâm", <strong class="text-primary">Tài Travel</strong> tự hào là đơn vị cung cấp dịch vụ xe hợp đồng, đưa đón sân bay và tour du lịch uy tín, chất lượng.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+                        Chúng tôi không chỉ cung cấp một chuyến đi, mà còn mang đến trải nghiệm di chuyển đẳng cấp, thoải mái nhất cho bạn và gia đình trên mọi nẻo đường.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h4 class="text-3xl font-bold text-accent mb-1">5+</h4>
+                            <p class="text-sm text-slate-500 font-medium uppercase">Năm kinh nghiệm</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                            <h4 class="text-3xl font-bold text-accent mb-1">10k+</h4>
+                            <p class="text-sm text-slate-500 font-medium uppercase">Chuyến đi an toàn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Value Proposition / 4 Lý Do -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-2">Giá Trị Cốt Lõi</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">Tại Sao Chọn Tài Travel?</h3>
+                <div class="h-1 w-20 bg-accent mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-bgLight p-8 rounded-2xl hover:shadow-soft transition-shadow duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                        <i class="fa-solid fa-wallet text-2xl text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Giá Trọn Gói Minh Bạch</h4>
+                    <p class="text-slate-600 leading-relaxed">Không phụ phí giờ chờ, không tự ý tăng giá ngày lễ. Báo giá một lần, cam kết không phát sinh.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-bgLight p-8 rounded-2xl hover:shadow-soft transition-shadow duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                        <i class="fa-solid fa-user-tie text-2xl text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Tài Xế Chuyên Nghiệp</h4>
+                    <p class="text-slate-600 leading-relaxed">Đội ngũ tài xế được đào tạo bài bản, văn minh, điềm đạm, trang phục lịch sự và tuyệt đối không khói thuốc.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-bgLight p-8 rounded-2xl hover:shadow-soft transition-shadow duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                        <i class="fa-solid fa-car text-2xl text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Xe Đời Mới Cao Cấp</h4>
+                    <p class="text-slate-600 leading-relaxed">100% xe đời mới từ 2026. Nội thất sạch bóng, máy lạnh sâu, thường xuyên bảo dưỡng và khử khuẩn.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-bgLight p-8 rounded-2xl hover:shadow-soft transition-shadow duration-300 border border-slate-100 group">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
+                        <i class="fa-solid fa-headset text-2xl text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Hỗ Trợ Khẩn Cấp 24/7</h4>
+                    <p class="text-slate-600 leading-relaxed">Tổng đài túc trực 24/24. Luôn sẵn sàng điều xe nhanh chóng. Đón tận nơi đúng cam kết từng phút.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Fleet Showcase -->
+    <section id="fleet" class="py-20 bg-bgLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-2">Đội Xe Của Chúng Tôi</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">Các Dòng Xe Phục Vụ</h3>
+                <div class="h-1 w-20 bg-accent mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600">Đa dạng lựa chọn từ 4 chỗ đến 7 chỗ, đáp ứng hoàn hảo mọi nhu cầu di chuyển của bạn từ công tác, du lịch đến thăm thân.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 4 Chỗ -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-soft flex flex-col h-full border border-slate-100 group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="photo%20VF5.png" alt="VinFast VF 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                            XE ĐIỆN THÔNG MINH
+                        </div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h4 class="text-2xl font-bold text-primary mb-2">Xe 4 Chỗ (VinFast VF 5)</h4>
+                        <p class="text-slate-500 mb-6 font-medium">Êm ái, không mùi, không tiếng ồn, thân thiện môi trường.</p>
+                        
+                        <div class="space-y-3 mb-8 flex-grow">
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Phù hợp công tác, đi khám bệnh, đưa đón sân bay, gia đình nhỏ (1-3 người).</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Xe đời mới từ 2026 trở lên.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Trang bị: Nước suối, khăn lạnh, wifi miễn phí.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Khử khuẩn và vệ sinh sạch sẽ trước mỗi chuyến đi.</span>
+                            </div>
+                        </div>
+                        
+                        <a href="https://zalo.me/0774937907" target="_blank" class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3.5 px-6 rounded-xl transition-colors duration-300 text-center block">
+                            ĐẶT XE 4 CHỖ QUA ZALO
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 7 Chỗ -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-soft flex flex-col h-full border border-slate-100 group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="photo%20Limo%20Green.png" alt="VinFast Limo Green" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                            LIMO GREEN CAO CẤP
+                        </div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h4 class="text-2xl font-bold text-primary mb-2">Xe 7 Chỗ (VinFast Limo Green)</h4>
+                        <p class="text-slate-500 mb-6 font-medium">Đẳng cấp thương gia, rộng rãi, trang bị tiện nghi tối đa.</p>
+                        
+                        <div class="space-y-3 mb-8 flex-grow">
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Phù hợp du lịch gia đình, về quê, hội nhóm, mang theo nhiều hành lý lớn.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Xe đời mới từ 2026 trở lên, không gian thoáng đãng.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Trang bị: Nước suối, khăn lạnh, wifi miễn phí.</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Băng ghế gập linh hoạt, điều hòa đa vùng mát lạnh.</span>
+                            </div>
+                        </div>
+                        
+                        <a href="https://zalo.me/0774937907" target="_blank" class="w-full bg-primary text-white hover:bg-primaryLight font-bold py-3.5 px-6 rounded-xl transition-colors duration-300 shadow-md text-center block">
+                            ĐẶT XE 7 CHỖ QUA ZALO
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Transparent Pricing Table -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-2">Báo Giá Tham Khảo</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">Lộ Trình Tiêu Biểu</h3>
+                <div class="h-1 w-20 bg-accent mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-600">Mức giá ưu đãi, trọn gói, minh bạch. Vui lòng liên hệ trực tiếp để có báo giá chính xác nhất theo thời điểm đặt xe.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Sân Bay -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden hover:border-accent transition-colors duration-300">
+                    <div class="bg-slate-50 py-6 text-center border-b border-slate-200">
+                        <i class="fa-solid fa-plane-arrival text-4xl text-primary mb-3"></i>
+                        <h4 class="text-xl font-bold text-primary">Đưa Đón Sân Bay</h4>
+                        <p class="text-sm text-slate-500 mt-1">Tuyến Nội thành - Sân bay</p>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                            <span class="font-medium text-slate-700">Xe 4 Chỗ</span>
+                            <span class="font-bold text-accent text-lg">Từ 700k</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2">
+                            <span class="font-medium text-slate-700">Xe 7 Chỗ</span>
+                            <span class="font-bold text-accent text-lg">Từ 900k</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Liên tỉnh -->
+                <div class="border-2 border-primary rounded-2xl overflow-hidden relative transform md:-translate-y-4 shadow-xl">
+                    <div class="absolute top-0 right-0 bg-accent text-primary text-xs font-bold px-3 py-1 rounded-bl-lg">PHỔ BIẾN</div>
+                    <div class="bg-primary py-6 text-center text-white">
+                        <i class="fa-solid fa-map-location-dot text-4xl text-accent mb-3"></i>
+                        <h4 class="text-xl font-bold">Tuyến Liên Tỉnh</h4>
+                        <p class="text-sm text-slate-300 mt-1">Di chuyển 1 chiều / 2 chiều</p>
+                    </div>
+                    <div class="p-6 space-y-4 bg-white">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                            <span class="font-medium text-slate-700">Xe 4 Chỗ</span>
+                            <span class="font-bold text-primary text-lg">Liên Hệ</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                            <span class="font-medium text-slate-700">Xe 7 Chỗ</span>
+                            <span class="font-bold text-primary text-lg">Liên Hệ</span>
+                        </div>
+                        <p class="text-xs text-slate-500 text-center pt-2 italic">*Giảm 30-50% cho chiều về (nếu có)</p>
+                    </div>
+                </div>
+                
+                <!-- Theo ngày / Tour -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden hover:border-accent transition-colors duration-300">
+                    <div class="bg-slate-50 py-6 text-center border-b border-slate-200">
+                        <i class="fa-solid fa-calendar-days text-4xl text-primary mb-3"></i>
+                        <h4 class="text-xl font-bold text-primary">Bao Xe Nguyên Ngày</h4>
+                        <p class="text-sm text-slate-500 mt-1">Phục vụ du lịch, sự kiện, cưới hỏi</p>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                            <span class="font-medium text-slate-700">Xe 4 Chỗ</span>
+                            <span class="font-bold text-accent text-lg">Liên hệ</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2">
+                            <span class="font-medium text-slate-700">Xe 7 Chỗ</span>
+                            <span class="font-bold text-accent text-lg">Liên hệ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <a href="#hero" class="inline-flex items-center text-primary font-bold hover:text-accent transition-colors">
+                    <i class="fa-solid fa-calculator mr-2"></i> Nhận báo giá chính xác cho lộ trình của bạn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Social Proof / Feedback -->
+    <section id="reviews" class="py-20 bg-primary relative overflow-hidden">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-5 translate-x-1/3 translate-y-1/3"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-2">Đánh Giá Khách Hàng</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Hàng Ngàn Chuyến Đi An Toàn</h3>
+                <div class="h-1 w-20 bg-accent mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-4xl text-white/10"></i>
+                    <div class="flex text-accent mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6 leading-relaxed">"Tôi đặt xe đi tỉnh lúc 3h sáng. Bác tài đến đúng giờ, gọi trước 15p, phụ giúp hành lý rất nhiệt tình. Xe mới, đi êm không bị say. Rất hài lòng với dịch vụ."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-slate-300 rounded-full flex justify-center items-center font-bold text-primary mr-4 text-lg">H</div>
+                        <div>
+                            <h5 class="text-white font-bold">Anh Hoàng</h5>
+                            <span class="text-slate-400 text-sm">Khách thuê đi Vũng Tàu</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-4xl text-white/10"></i>
+                    <div class="flex text-accent mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6 leading-relaxed">"Giá báo trọn gói từ đầu nên tôi rất yên tâm, đi đường kẹt xe cũng không thu thêm. Bác tài lịch sự, điềm đạm, lên xe là hỏi chỉnh nhiệt độ vừa chưa. Sẽ ủng hộ lâu dài."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-slate-300 rounded-full flex justify-center items-center font-bold text-primary mr-4 text-lg">M</div>
+                        <div>
+                            <h5 class="text-white font-bold">Chị Mai Anh</h5>
+                            <span class="text-slate-400 text-sm">Khách đưa đón sân bay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 relative">
+                    <i class="fa-solid fa-quote-right absolute top-6 right-6 text-4xl text-white/10"></i>
+                    <div class="flex text-accent mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6 leading-relaxed">"Thuê chiếc 7 chỗ đi Đà Lạt cuối tuần cho cả nhà. Xe Carnival nội thất đẹp tuyệt vời. Tài xế rành đường, biết nhiều chỗ ăn ngon. Trải nghiệm đáng tiền 10/10."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-slate-300 rounded-full flex justify-center items-center font-bold text-primary mr-4 text-lg">T</div>
+                        <div>
+                            <h5 class="text-white font-bold">Chú Tuấn</h5>
+                            <span class="text-slate-400 text-sm">Khách thuê tour ngày</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Footer -->
+    <footer class="bg-primaryLight text-slate-300 pt-16 pb-24 md:pb-8 border-t border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <img src="Logo Tài Travel.png" alt="Tài Travel Logo" class="h-16 w-auto object-contain bg-white rounded-xl p-2">
+                    </div>
+                    <p class="text-slate-400 mb-6 max-w-sm">
+                        Đơn vị cung cấp dịch vụ xe hợp đồng 4 chỗ & 7 chỗ uy tín hàng đầu. Cam kết mang đến những chuyến đi an toàn, thoải mái với chi phí minh bạch nhất.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/1CgcumRoKw/" target="_blank" class="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@taibeo0711?_r=1&_t=ZS-99YVwbQcmhD" target="_blank" class="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-5 border-b border-slate-700 pb-2 inline-block">Liên Kết Nhanh</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="hover:text-accent transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Về chúng tôi</a></li>
+                        <li><a href="#fleet" class="hover:text-accent transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Các dòng xe</a></li>
+                        <li><a href="#pricing" class="hover:text-accent transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Bảng giá tham khảo</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Chính sách bảo mật</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-5 border-b border-slate-700 pb-2 inline-block">Thông Tin Liên Hệ</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1.5 mr-3 text-accent w-4 text-center"></i>
+                            <span>Thành Phố Mỹ Tho, Tiền Giang</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-phone mt-1.5 mr-3 text-accent w-4 text-center"></i>
+                            <a href="tel:0774937907" class="hover:text-white font-bold text-lg">077 493 7907</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-envelope mt-1.5 mr-3 text-accent w-4 text-center"></i>
+                            <a href="mailto:tainguyen071122@gmail.com" class="hover:text-white">tainguyen071122@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2026 Tài Travel. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Thiết kế bởi Senior Frontend Developer</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 7. Bottom Sticky Mobile Action Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 z-50 px-2 py-2 shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+        <div class="flex gap-2">
+            <a href="tel:0774937907" class="flex-1 bg-green-500 active:bg-green-600 text-white flex flex-col items-center justify-center py-2.5 rounded-xl transition-colors">
+                <i class="fa-solid fa-phone-volume text-xl mb-1"></i>
+                <span class="text-[11px] font-bold uppercase">Gọi Điện Ngay</span>
+            </a>
+            <a href="https://zalo.me/0774937907" target="_blank" class="flex-1 bg-blue-500 active:bg-blue-600 text-white flex flex-col items-center justify-center py-2.5 rounded-xl transition-colors">
+                <img src="icon%20Zalo%20APP.png" class="w-5 h-5 mb-1 rounded-md" alt="Zalo">
+                <span class="text-[11px] font-bold uppercase">Chat Zalo Báo Giá</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Set header styling on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.replace('bg-white/95', 'bg-white');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.replace('bg-white', 'bg-white/95');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+
+    </script>
+</body>
+</html>
